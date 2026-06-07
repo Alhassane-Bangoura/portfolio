@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Alhassane Bangoura</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #2563EB;
+            --dark: #0F172A;
+            --gray-light: #F1F5F9;
+            --gray: #64748B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .a4-page {
+            width: 210mm;
+            min-height: 297mm;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Print styles */
+        @media print {
+            body { padding: 0; background: white; }
+            .a4-page { box-shadow: none; width: 100%; height: 100%; }
+            .no-print { display: none !important; }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 35%;
+            background-color: var(--dark);
+            color: white;
+            padding: 2.5rem 2rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.1);
+            margin: 0 auto 1.5rem;
+            display: block;
+            object-fit: cover;
+        }
+
+        .name-side {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .name-side h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .name-side p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .section-side {
+            margin-bottom: 2rem;
+        }
+
+        .section-side h3 {
+            color: white;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            color: #CBD5E1;
+        }
+
+        .contact-item svg { width: 16px; height: 16px; fill: currentColor; }
+        
+        .skill-item {
+            margin-bottom: 0.8rem;
+        }
+        
+        .skill-name {
+            font-size: 0.9rem;
+            color: #E2E8F0;
+            margin-bottom: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.1);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #E2E8F0;
+        }
+
+        /* Main Content */
+        .main-content {
+            width: 65%;
+            padding: 2.5rem 3rem;
+        }
+
+        .profile-text {
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+            text-align: justify;
+        }
+
+        .section-main {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-main h2 {
+            color: var(--dark);
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-main h2::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: var(--gray-light);
+            margin-left: 1rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 2px solid var(--gray-light);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .timeline-org {
+            font-weight: 500;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .project-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .project-title {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .project-tech {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.3);
+            transition: all 0.3s ease;
+        }
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Enregistrer en PDF</button>
+
+    <div class="a4-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="name-side">
+                <img src="/profile.jpg" class="profile-img" alt="Alhassane Bangoura">
+                <h1>ALHASSANE<br>BANGOURA</h1>
+                <p>Développeur Full Stack & Entrepreneur</p>
+            </div>
+
+            <div class="section-side">
+                <h3>Contact</h3>
+                <div class="contact-item">
+                    📍 Labé, Guinée
+                </div>
+                <div class="contact-item">
+                    📞 +224 620 465 582
+                </div>
+                <div class="contact-item">
+                    ✉️ alha6204@gmail.com
+                </div>
+                <div class="contact-item">
+                    🌐 github.com/Alhassane-Bangoura
+                </div>
+            </div>
+
+            <div class="section-side">
+                <h3>Tech Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Flutter / Dart</span> <span>88%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>React / Next.js</span> <span>78%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 78%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Supabase / SQL</span> <span>82%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 82%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Node.js / Express</span> <span>65%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 65%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name"><span>Spring Boot</span> <span>20%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 20%"></div></div>
+                </div>
+            </div>
+
+            <div class="section-side">
+                <h3>Business & Marketing</h3>
+                <div class="tag-container">
+                    <div class="tag">Facebook Ads</div>
+                    <div class="tag">TikTok Ads</div>
+                    <div class="tag">Branding</div>
+                    <div class="tag">Community Mgt</div>
+                    <div class="tag">Design Graphique</div>
+                    <div class="tag">Stratégie Digitale</div>
+                </div>
+            </div>
+
+            <div class="section-side">
+                <h3>Langues</h3>
+                <div class="contact-item">🇫🇷 Français - Courant</div>
+                <div class="contact-item">🇬🇧 Anglais - Technique</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <p class="profile-text">
+                Développeur Full Stack spécialisé dans la création d'applications web et mobiles performantes, je suis avant tout un entrepreneur digital. Fort d'une expérience concrète dans l'accompagnement de cabinets professionnels, j'allie développement technique et vision business pour concevoir des produits qui génèrent de la valeur réelle sur le marché africain.
+            </p>
+
+            <div class="section-main">
+                <h2>Expérience & Formation</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">Hackathon Universitaire</div>
+                        <div class="timeline-date">2026</div>
+                    </div>
+                    <div class="timeline-org">Université de Labé</div>
+                    <div class="timeline-desc">Création d'une plateforme de mise en relation entre producteurs et acheteurs locaux pour résoudre les problèmes d'approvisionnement de la ville de Labé.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">Hackathon Universitaire</div>
+                        <div class="timeline-date">2025</div>
+                    </div>
+                    <div class="timeline-org">Université de Labé</div>
+                    <div class="timeline-desc">Développement d'une plateforme de signalement des déchets pour assainir la ville et proposer une solution écologique à l'insalubrité en Guinée.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">Formation Développement Mobile & Sécurité</div>
+                        <div class="timeline-date">2025</div>
+                    </div>
+                    <div class="timeline-org">Orange Digital Center</div>
+                    <div class="timeline-desc">Formation pratique intensive sur le développement d'applications mobiles avancées et les bases de la cybersécurité.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="timeline-title">Licence 2 - Sciences Informatiques</div>
+                        <div class="timeline-date">En cours</div>
+                    </div>
+                    <div class="timeline-org">Université</div>
+                    <div class="timeline-desc">Parcours académique généraliste en algorithmique, structures de données et génie logiciel.</div>
+                </div>
+            </div>
+
+            <div class="section-main">
+                <h2>Projets Majeurs</h2>
+
+                <div class="project-item">
+                    <div class="project-title">GuineeTransport</div>
+                    <div class="project-tech">Flutter • Supabase • PostgreSQL</div>
+                    <div class="project-desc">Plateforme innovante de digitalisation du secteur des transports en Guinée. Optimisation des trajets, suivi en temps réel et réservation simplifiée.</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">NOVA GENIX DIGITAL</div>
+                    <div class="project-tech">Flutter • Node.js • Express • SQLite</div>
+                    <div class="project-desc">Système ERP sur mesure. Architecture modulaire intégrant la gestion des stocks, la comptabilité, les statistiques avancées et une traçabilité complète (Audit).</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">AideEtudiant (Assistant IA)</div>
+                    <div class="project-tech">Flutter • Riverpod • Groq API (Llama 3)</div>
+                    <div class="project-desc">Assistant pédagogique IA multiplateforme pour étudiants. Réponses ultra-rapides, gestion des cours, tâches et emploi du temps.</div>
+                </div>
+
+                <div class="project-item">
+                    <div class="project-title">AIBusiness</div>
+                    <div class="project-tech">Flutter • Supabase • IA</div>
+                    <div class="project-desc">Boîte à outils SaaS Freemium pour entrepreneurs. Génération d'idées business, de scripts TikTok et de stratégies marketing propulsées par l'IA.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                window.print();
+            }, 500);
+        };
+    </script>
+</body>
+</html>
